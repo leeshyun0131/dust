@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="시도별 실시간 대기오염 측정 정보를 확인합니다.">
+  <title>우리 동네 대기질</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="앱-바깥">
+    <header class="머리말">
+      <p class="윗글">한국환경공단 실시간 대기 정보</p>
+      <h1>우리 동네 대기질</h1>
+      <label for="지역선택">지역 선택</label>
+      <select id="지역선택" aria-label="시도 선택">
+        <option value="전국">전국</option>
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="대구">대구</option>
+        <option value="인천">인천</option>
+        <option value="광주">광주</option>
+        <option value="대전">대전</option>
+        <option value="울산">울산</option>
+        <option value="세종">세종</option>
+        <option value="경기">경기</option>
+        <option value="강원">강원</option>
+        <option value="충북">충북</option>
+        <option value="충남">충남</option>
+        <option value="전북">전북</option>
+        <option value="전남">전남</option>
+        <option value="경북">경북</option>
+        <option value="경남">경남</option>
+        <option value="제주">제주</option>
+      </select>
+    </header>
+
+    <section id="대표상태" class="대표상태 등급-알수없음" aria-label="지역 대표 대기질">
+      <div class="대표상태-요약">
+        <p id="대표이모지" class="대표이모지" aria-hidden="true">⏳</p>
+        <div>
+          <p id="대표등급" class="대표등급">불러오는 중...</p>
+          <h2 id="평균-제목">전국 평균 미세먼지</h2>
+        </div>
+      </div>
+      <p class="대표-수치"><span id="평균값">--</span><span class="단위">㎍/㎥</span></p>
+      <p id="대표안내" class="대표안내">불러오는 중...</p>
+      <p id="평균-설명" class="평균-설명">불러오는 중...</p>
+    </section>
+
+    <section class="그래프-영역" aria-labelledby="그래프-제목">
+      <div class="목록-머리">
+        <h2 id="그래프-제목">미세먼지 수치 상위 10곳</h2>
+        <p>미세먼지 수치가 높은 순</p>
+      </div>
+      <p id="그래프-상태" class="그래프-상태" role="status" aria-live="polite">불러오는 중...</p>
+      <div class="그래프-틀">
+        <canvas id="미세먼지그래프" role="img" aria-label="미세먼지 수치가 높은 측정소 상위 10곳 가로 막대그래프"></canvas>
+      </div>
+    </section>
+
+    <section class="측정소-영역" aria-labelledby="측정소-제목">
+      <div class="목록-머리">
+        <h2 id="측정소-제목">측정소별 대기질</h2>
+        <p id="측정소-개수"></p>
+      </div>
+      <p id="상태메시지" class="상태메시지" role="status" aria-live="polite">
+        불러오는 중...
+      </p>
+      <div id="측정소목록" class="측정소-목록"></div>
+    </section>
+    <footer>
+      공공데이터 출처:
+      <a href="https://www.data.go.kr/data/15073861/openapi.do" target="_blank" rel="noopener noreferrer">
+        공공데이터포털 한국환경공단 에어코리아 대기오염정보
+      </a>
+    </footer>
+  </main>
+</body>
+</html>
